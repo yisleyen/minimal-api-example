@@ -7,7 +7,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello world!");
+app.MapGet("/", () => "Hello Minimal APIs");
 
 app.MapGet("/todoitems", async (TodoDb db) =>
     await db.Todos.ToListAsync());
