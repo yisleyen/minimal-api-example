@@ -7,6 +7,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 var app = builder.Build();
 
+// HttGet
 app.MapGet("/", () => "Hello Minimal APIs");
 
 app.MapGet("/todoitems", async (TodoDb db) =>
@@ -21,8 +22,14 @@ app.MapGet("/todoitems/{id}", async (int id, TodoDb db) =>
             ? Results.Ok(todo)
             : Results.NotFound());
 
+// Customizing OpenAPI
+string SomeMessage() => "Hello Minimal APIs";
+app.MapGet("/hello", SomeMessage);
+
+// HttpContext value bind
 app.MapGet("/hello/{name}", (HttpContext ctx) => $"Hello {ctx.Request.RouteValues["name"]}");
 
+// HttPost
 app.MapPost("/todoitems", async (Todo todo, TodoDb db) =>
 {
     db.Todos.Add(todo);
@@ -31,6 +38,7 @@ app.MapPost("/todoitems", async (Todo todo, TodoDb db) =>
     return Results.Created($"/todoitems/{todo.Id}", todo);
 });
 
+// HttPut
 app.MapPut("/todoitems/{id}", async (int id, Todo inputTodo, TodoDb db) =>
 {
     var todo = await db.Todos.FindAsync(id);
@@ -45,6 +53,7 @@ app.MapPut("/todoitems/{id}", async (int id, Todo inputTodo, TodoDb db) =>
     return Results.NoContent();
 });
 
+// HttDelete
 app.MapDelete("/todoitems/{id}", async (int id, TodoDb db) =>
 {
     if (await db.Todos.FindAsync(id) is Todo todo)
