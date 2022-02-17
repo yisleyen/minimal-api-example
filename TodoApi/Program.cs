@@ -66,8 +66,14 @@ app.MapDelete("/todoitems/{id}", async (int id, TodoDb db) =>
     return Results.NotFound();
 });
 
+// Multi-port usage
+app.Urls.Add("https://localhost:3000");
+app.Urls.Add("https://localhost:4000");
+
 // Custom port number sample
-app.Run("https://localhost:3000/");
+//app.Run("https://localhost:3000");
+
+app.Run();
 
 class Todo
 {
