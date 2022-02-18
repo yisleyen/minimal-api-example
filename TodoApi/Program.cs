@@ -72,14 +72,20 @@ app.Logger.LogError("Error message");
 app.Logger.LogCritical("Critical message");
 app.Logger.LogWarning("Warning message");
 
-// Multi-port usage
-app.Urls.Add("https://localhost:3000");
-app.Urls.Add("https://localhost:4000");
+// Reading data from appsetting.json
+app.Logger.LogInformation($"{app.Configuration["JWT:Key"]}");
+
+//// Multi-port usage
+//app.Urls.Add("https://localhost:3000");
+//app.Urls.Add("https://localhost:4000");
 
 // Custom port number sample
-//app.Run("https://localhost:3000");
+// app.Run("https://localhost:3000");
 
-app.Run();
+// Running from port variable in appsetting.json
+app.Run($"{app.Configuration["JWT:Port"]}");
+
+// app.Run();
 
 class Todo
 {
