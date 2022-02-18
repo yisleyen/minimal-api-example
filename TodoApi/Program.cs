@@ -66,6 +66,12 @@ app.MapDelete("/todoitems/{id}", async (int id, TodoDb db) =>
     return Results.NotFound();
 });
 
+// Console log message
+app.Logger.LogInformation("Information message");
+app.Logger.LogError("Error message");
+app.Logger.LogCritical("Critical message");
+app.Logger.LogWarning("Warning message");
+
 // Multi-port usage
 app.Urls.Add("https://localhost:3000");
 app.Urls.Add("https://localhost:4000");
