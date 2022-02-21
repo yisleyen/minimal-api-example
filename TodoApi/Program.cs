@@ -4,8 +4,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<TodoDb>(opt => opt.UseInMemoryDatabase("TodoList"));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+// Swagger settings
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "TotoApi V1");
+});
 
 // HttGet
 app.MapGet("/", () => "Hello Minimal APIs");
@@ -80,12 +89,12 @@ app.Logger.LogInformation($"{app.Configuration["JWT:Key"]}");
 //app.Urls.Add("https://localhost:4000");
 
 // Custom port number sample
-// app.Run("https://localhost:3000");
+//app.Run("https://localhost:3000");
 
 // Running from port variable in appsetting.json
-app.Run($"{app.Configuration["JWT:Port"]}");
+//app.Run($"{app.Configuration["JWT:Port"]}");
 
-// app.Run();
+app.Run();
 
 class Todo
 {
