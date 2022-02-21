@@ -38,6 +38,11 @@ app.MapGet("/hello", SomeMessage);
 // HttpContext value bind
 app.MapGet("/hello/{name}", (HttpContext ctx) => $"Hello {ctx.Request.RouteValues["name"]}");
 
+// OPTIONS and HEAD method list
+app.MapMethods("/options-or-head",
+    new[] { "OPTIONS", "HEAD" },
+    () => "This is an options or head request");
+
 // HttPost
 app.MapPost("/todoitems", async (Todo todo, TodoDb db) =>
 {
