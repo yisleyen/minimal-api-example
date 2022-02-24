@@ -31,9 +31,16 @@ app.MapGet("/todoitems/{id}", async (int id, TodoDb db) =>
             ? Results.Ok(todo)
             : Results.NotFound());
 
-// Customizing OpenAPI
+// Route Handler
 string SomeMessage() => "Hello Minimal APIs";
 app.MapGet("/hello", SomeMessage);
+
+string Local() => "Minimal APIs";
+app.MapGet("/local", Local);
+
+RouteHello routeHello = new RouteHello();
+app.MapGet("/instance", routeHello.InstanceMethod);
+app.MapGet("/static", RouteHello.StaticMethod);
 
 // HttpContext value bind
 app.MapGet("/hello/{name}", (HttpContext ctx) => $"Hello {ctx.Request.RouteValues["name"]}");
@@ -114,4 +121,17 @@ class TodoDb : DbContext
         : base(options) { }
 
     public DbSet<Todo> Todos => Set<Todo>();
+}
+
+class RouteHello
+{
+    public string InstanceMethod()
+    {
+        return "InstanceMethod";
+    }
+
+    public static string StaticMethod()
+    {
+        return "StaticMethod";
+    }
 }
