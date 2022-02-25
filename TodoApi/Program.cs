@@ -17,7 +17,7 @@ app.UseSwaggerUI(c =>
 });
 
 // HttGet
-app.MapGet("/", () => "Hello Minimal APIs");
+//app.MapGet("/", () => "Hello Minimal APIs");
 
 app.MapGet("/todoitems", async (TodoDb db) =>
     await db.Todos.ToListAsync());
@@ -41,6 +41,14 @@ app.MapGet("/local", Local);
 RouteHello routeHello = new RouteHello();
 app.MapGet("/instance", routeHello.InstanceMethod);
 app.MapGet("/static", RouteHello.StaticMethod);
+
+app.MapGet("/links", () => "Link generator").WithName("hi");
+
+app.MapGet("/", (LinkGenerator links) =>
+@$"The link to the link route is
+{
+        links.GetPathByName("hi", values: null)
+}");
 
 // HttpContext value bind
 app.MapGet("/hello/{name}", (HttpContext ctx) => $"Hello {ctx.Request.RouteValues["name"]}");
