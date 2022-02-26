@@ -51,6 +51,11 @@ app.MapGet("/static", RouteHello.StaticMethod);
 //        links.GetPathByName("hi", values: null)
 //}");
 
+// Route parameters
+app.MapGet("/users/{username}/books/{id}",
+    (string username, int id)
+    => $"User: { username } Book: {id}");
+
 // HttpContext value bind
 app.MapGet("/hello/{name}", (HttpContext ctx) => $"Hello {ctx.Request.RouteValues["name"]}");
 
