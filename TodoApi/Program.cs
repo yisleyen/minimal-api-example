@@ -51,6 +51,12 @@ app.MapGet("/static", RouteHello.StaticMethod);
 //        links.GetPathByName("hi", values: null)
 //}");
 
+// Optional parameters
+app.MapGet(
+    "/products",
+(int? pageNumber) =>
+$"Request page {pageNumber ?? 1}");
+
 // Route parameters
 app.MapGet("/users/{username}/books/{id}",
     (string username, int id)
