@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -50,6 +51,14 @@ app.MapGet("/static", RouteHello.StaticMethod);
 //{
 //        links.GetPathByName("hi", values: null)
 //}");
+
+// Open parameters bind
+app.MapGet(
+    "/openparameters/{id}",
+    ([FromRoute] int id,
+    [FromQuery(Name = "p")] int page,
+    [FromHeader(Name = "Content-Type")] string contentType) =>
+    { });
 
 // Optional parameters
 app.MapGet(
