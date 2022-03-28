@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -42,6 +43,15 @@ app.MapGet("/local", Local);
 RouteHello routeHello = new RouteHello();
 app.MapGet("/instance", routeHello.InstanceMethod);
 app.MapGet("/static", RouteHello.StaticMethod);
+
+// Authorization
+app.MapGet("/login", () => "Herkese açýk")
+    .AllowAnonymous();
+
+app.MapGet("/admin", [Authorize("AdminsOnly")] () => "Adminlere özel!");
+
+app.MapGet("/auth", () => "Sadece yetkili kiþiler!")
+   .RequireAuthorization();
 
 // Link generator
 //app.MapGet("/links", () => "Link generator").WithName("hi");

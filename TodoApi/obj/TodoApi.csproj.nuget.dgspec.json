@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Yusuf\\me\\minimal-api-example\\TodoApi\\TodoApi.csproj": {}
+    "C:\\Yusuf\\project\\TodoApi\\TodoApi\\TodoApi.csproj": {}
   },
   "projects": {
-    "C:\\Yusuf\\me\\minimal-api-example\\TodoApi\\TodoApi.csproj": {
+    "C:\\Yusuf\\project\\TodoApi\\TodoApi\\TodoApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Yusuf\\me\\minimal-api-example\\TodoApi\\TodoApi.csproj",
+        "projectUniqueName": "C:\\Yusuf\\project\\TodoApi\\TodoApi\\TodoApi.csproj",
         "projectName": "TodoApi",
-        "projectPath": "C:\\Yusuf\\me\\minimal-api-example\\TodoApi\\TodoApi.csproj",
-        "packagesPath": "C:\\Users\\Yusuf\\.nuget\\packages\\",
-        "outputPath": "C:\\Yusuf\\me\\minimal-api-example\\TodoApi\\obj\\",
+        "projectPath": "C:\\Yusuf\\project\\TodoApi\\TodoApi\\TodoApi.csproj",
+        "packagesPath": "C:\\Users\\yusuf\\.nuget\\packages\\",
+        "outputPath": "C:\\Yusuf\\project\\TodoApi\\TodoApi\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Yusuf\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\yusuf\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -71,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
